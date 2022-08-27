@@ -26,6 +26,12 @@
 # Visual Studio cache directory
 .vs/
 
+# a1 dir with animations
+/a1
+
+# ТЗ
+ТЗ.docx
+
 # Gradle cache directory
 .gradle/
 
@@ -51,6 +57,7 @@ ExportedObj/
 *.pidb.meta
 *.pdb.meta
 *.mdb.meta
+*.meta
 
 # Unity3D generated file on crash reports
 sysinfo.txt
