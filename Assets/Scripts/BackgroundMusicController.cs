@@ -1,6 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
+
+//
+// контроллер музыки на фоне
+//
 
 public class BackgroundMusicController : MonoBehaviour
 {
@@ -8,7 +11,8 @@ public class BackgroundMusicController : MonoBehaviour
     private AudioClip[] _clips;
     private AudioSource _src;
 
-    // Start is called before the first frame update
+    //если не включен звук - убираем возможность слышать звуки через audiolistener
+    //если не включена музыка - не включаем корутину
     void Start()
     {
         AudioListener.volume = 1;
@@ -21,18 +25,19 @@ public class BackgroundMusicController : MonoBehaviour
         }
     }
 
+    //бесконечно крутим по кругу треки (начало на рандомном треке, порядок - всегда один)
     IEnumerator SoundCoroutine()
     {
         int index = ResourceManager.instance.Rng.Next(0, _clips.Length);
-        //���������� ������ �� ����� �����, ���� ���� ����
+        //бесконечно крутим по кругу треки, пока идет игра
         while (true)
         {
             if (index >= _clips.Length)
                 index = 0;
             _src.PlayOneShot(_clips[index]);
-            //����, ���� ������ �������
+            //ждем, пока играет музычка
             yield return new WaitWhile(() => _src.isPlaying);
-            //���� ������ ������, ������ ���)
+            //пять секунд тишины, просто так)
             yield return new WaitForSeconds(5f);
             index++;
         }

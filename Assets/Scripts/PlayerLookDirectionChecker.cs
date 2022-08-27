@@ -1,16 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
+//
+// класс для осмотра по сторонам с помощью мыши
+//
 
 public class PlayerLookDirectionChecker : MonoBehaviour
 {
-    public float _mouseSensitivity = 1000f;
-    public bool _canMove = true;
-
+    //чувствительность мышки
+    private float _mouseSensitivity = 300f;
+    //игрок, которого поворачиваем
     private Transform _playerBody;
+    //поворот по оси x
     private float _XRotation = 0f;
-
-    // Start is called before the first frame update
+ 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -25,9 +27,11 @@ public class PlayerLookDirectionChecker : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y") * _mouseSensitivity * Time.deltaTime;
 
         _XRotation -= mouseY;
+        //ограничиваем угол обзора по вертикали, чтобы персонаж не наматывался на валы
         _XRotation = Mathf.Clamp(_XRotation, -90f, 76f);
+        //поворачиваем камеру
         transform.localRotation = Quaternion.Euler(_XRotation, 0f, 0f);
-
+        //поворачиваем игрока
         _playerBody.Rotate(Vector3.up * mouseX);
     }
 }

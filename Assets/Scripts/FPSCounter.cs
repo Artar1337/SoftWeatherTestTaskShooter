@@ -1,6 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+
+//
+//счетчик фпс
+//
 
 public class FPSCounter : MonoBehaviour
 {
@@ -9,7 +11,7 @@ public class FPSCounter : MonoBehaviour
     private void Start()
     {
         text = transform.Find("Text").GetComponent<TMPro.TMP_Text>();
-        InvokeRepeating("UpdateFPS", 1, 1);
+        InvokeRepeating(nameof(UpdateFPS), 1, 1);
     }
 
     public void UpdateFPS()

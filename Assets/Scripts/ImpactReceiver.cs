@@ -1,10 +1,18 @@
-using UnityEngine;
+﻿using UnityEngine;
+
+//
+// класс нужен для обработки импульса, который передает враг
+// при ударе по игроку (CharacterController не поддерживает это сам по себе)
+//
 
 public class ImpactReceiver : MonoBehaviour
 {
+    //масса персонажа
     [SerializeField]
-    private float _mass = 3.0f; // defines the character mass
+    private float _mass = 3.0f;
+    //текущий вектор удара
     private Vector3 _impact = Vector3.zero;
+    //контроллер
     private CharacterController _character;
     
     void Start()
@@ -12,22 +20,21 @@ public class ImpactReceiver : MonoBehaviour
         _character = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        // apply the impact force:
-        if (_impact.magnitude > 0.2F) 
+        // применяем удар
+        if (_impact.magnitude > 0.2f) 
             _character.Move(_impact * Time.fixedDeltaTime);
-        // consumes the impact energy each cycle:
+        // линейно интерполируем от удара до нуля
         _impact = Vector3.Lerp(_impact, Vector3.zero, 5 * Time.fixedDeltaTime);
     }
 
-    // call this function to add an impact force:
+    // вызываем, если надо получить удар
     public void AddImpact(Vector3 dir, float force)
     {
         dir.Normalize();
         if (dir.y < 0) 
-            dir.y = -dir.y; // reflect down force on the ground
+            dir.y = -dir.y;
         _impact += dir.normalized * force / _mass;
     }
 }

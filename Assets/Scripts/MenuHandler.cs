@@ -1,14 +1,21 @@
-using UnityEngine.SceneManagement;
+﻿using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
+//
+// обработчик событий в меню
+//
+
 public class MenuHandler : MonoBehaviour
 {
+    //если true - то этот обработчик стоит на корневом Canvas
     [SerializeField]
     private bool _isMain = false;
-    GameObject _canvas, _main, _settings, _loading;
-    Toggle _music;
+    //объекты корневого canvas, главного экрана, настроек и загрузки
+    private GameObject _canvas, _main, _settings, _loading;
+    //тогглбокс для музыки
+    private Toggle _music;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +39,7 @@ public class MenuHandler : MonoBehaviour
         Cursor.visible = true;
     }
 
+    //вкл/выкл музыку
     public void SetMusicStatus(bool status)
     {
         if (!status)
@@ -40,6 +48,7 @@ public class MenuHandler : MonoBehaviour
             PreferencesHandler.instance.Music = 1;
     }
 
+    //вкл/выкл звук (также включает/выключает и музыку)
     public void SetSoundStatus(bool status)
     {
         if (!status)
@@ -62,27 +71,32 @@ public class MenuHandler : MonoBehaviour
         }
     }
 
+    //устанавливает чувствительность мыши
     public void SetSens(float sens)
     {
         PreferencesHandler.instance.Sens = (int)sens;
     }
 
+    //выход из приложухи
     public void Exit()
     {
         Application.Quit();
     }
 
+    //открывает/закрывает главное меню/настройки
     public void OpenMenu(bool main)
     {
         _main.SetActive(main);
         _settings.SetActive(!main);
     }
 
+    //старт игры
     public void StartGame()
     {
         StartCoroutine(LoadCoroutine());
     }
 
+    //сброс счета
     public void ResetScore()
     {
         PreferencesHandler.instance.ResetRecord();
@@ -90,10 +104,14 @@ public class MenuHandler : MonoBehaviour
             "BEST SCORE: 0";
     }
 
+    //загрузка игры
     private IEnumerator LoadCoroutine()
     {
+        //активируем объект "загрузка"
         _loading.SetActive(true);
+        //ждем один фрейм
         yield return null;
+        //и только потом грузимся на уровень
         SceneManager.LoadScene("Game", LoadSceneMode.Single);
     }
 }

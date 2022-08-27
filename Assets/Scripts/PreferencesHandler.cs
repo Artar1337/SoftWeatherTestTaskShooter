@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+п»їusing UnityEngine;
 
-// здесь обрабатываются записи из реестра
+//
+// Р·РґРµСЃСЊ РѕР±СЂР°Р±Р°С‚С‹РІР°СЋС‚СЃСЏ Р·Р°РїРёСЃРё РёР· СЂРµРµСЃС‚СЂР° (РЅР°СЃС‚СЂРѕР№РєРё)
+//
 
 public class PreferencesHandler : MonoBehaviour
 {
@@ -23,7 +23,7 @@ public class PreferencesHandler : MonoBehaviour
 
     private string _record = "Record", _sens = "Sens", _sound = "Sound", _music = "Music";
 
-    //рекорд хранится просто в реестре
+    //СЂРµРєРѕСЂРґ С…СЂР°РЅРёС‚СЃСЏ РїСЂРѕСЃС‚Рѕ РІ СЂРµРµСЃС‚СЂРµ
     public int Record { 
         get
         {
@@ -41,7 +41,7 @@ public class PreferencesHandler : MonoBehaviour
         SetIntParameter(_record, 0);
     }
 
-    //чувствительность мышки, меняем от 10 до 1000
+    //С‡СѓРІСЃС‚РІРёС‚РµР»СЊРЅРѕСЃС‚СЊ РјС‹С€РєРё, РјРµРЅСЏРµРј РѕС‚ 10 РґРѕ 1000
     public int Sens
     {
         get
@@ -56,7 +56,7 @@ public class PreferencesHandler : MonoBehaviour
         }
     }
 
-    //-1 - выкл, 1 - вкл
+    //-1 - РІС‹РєР», 1 - РІРєР»
     public int Sound
     {
         get
@@ -71,7 +71,7 @@ public class PreferencesHandler : MonoBehaviour
         }
     }
 
-    //-1 - выкл, 1 - вкл
+    //-1 - РІС‹РєР», 1 - РІРєР»
     public int Music
     {
         get
@@ -86,6 +86,7 @@ public class PreferencesHandler : MonoBehaviour
         }
     }
 
+    //РїРѕР»СѓС‡Р°РµРј Int РїР°СЂР°РјРµС‚СЂ, РµСЃР»Рё РЅРµС‚ С‚Р°РєРѕРіРѕ - РёРЅРёС†РёР°Р»РёР·РёСЂСѓРµРј, РїРѕР»СѓС‡Р°РµРј 0
     private int GetIntParameter(string name)
     {
         if (!PlayerPrefs.HasKey(name))
@@ -93,6 +94,7 @@ public class PreferencesHandler : MonoBehaviour
         return PlayerPrefs.GetInt(name);
     }
 
+    //СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј Int РїР°СЂР°РјРµС‚СЂ
     private void SetIntParameter(string name, int value)
     {
         PlayerPrefs.SetInt(name, value);
