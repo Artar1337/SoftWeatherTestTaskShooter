@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: c2380dad3e9f94f41b4486456404010b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _gunNoAmmoClickSound: {fileID: 8300000, guid: e6cb83a9ea96a8645b22855c303efe6f, type: 3}
+  - _bulletHole: {fileID: 1147525428283560075, guid: 78154994432a62e47b7d29bb641c9517, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 55694d3b5ed2f7c4daef7a1f84ffb2ee
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - playerIsTiredSound: {fileID: 8300000, guid: e10eb6f701d018849a2ff281b40eaaf9, type: 3}
+  - _playerLandedSound: {fileID: 8300000, guid: 33cd993d3f9d11f4eb90a559d672e32c, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

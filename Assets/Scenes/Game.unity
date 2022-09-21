@@ -635,7 +635,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 900, y: 400}
+  m_SizeDelta: {x: 900, y: 550}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &236248385
 MonoBehaviour:
@@ -2536,14 +2536,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'WASD - Move
+  m_text: 'WASD - move
 
     Mouse - look and shoot
 
+    SHIFT - run
+
+    SPACE -
+    jump
+
     F1 - show/hide FPS
 
-    ESC
-    - lose'
+    ESC - lose'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4081,8 +4085,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cd7929e0b5a13741ad15a56eea3a11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mouseSensitivity: 1000
-  _canMove: 1
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
